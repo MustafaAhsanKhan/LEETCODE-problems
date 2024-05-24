@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClInclude Include="ClimbingStairs.h" />
     <ClInclude Include="Fibonacci.h" />
+    <ClInclude Include="Tribonacci.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Tribonacci.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

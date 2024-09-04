@@ -1,27 +1,26 @@
 #include <iostream>
-using namespace std;
 #include <vector>
+using namespace std;
 
 class Solution {
 public:
     bool increasingTriplet(vector<int>& nums)
     {
-        for(int i = 0; i < nums.size() - 2; ++i)
+        int first = INT_MAX, second = INT_MAX;
+
+        for (int n : nums)
         {
-            int count = 1;
-            int curr_index = i;
-            for(int j = i + 1; j < nums.size(); ++j)
+            if (n <= first)
             {
-                if(nums[j] > nums[curr_index])
-                {
-                    curr_index = j;
-                    count++;
-                    cout << curr_index << endl;
-                    if(count == 3)
-                    {
-                        return true;
-                    }
-                }
+                first = n;  //  smallest element
+            }
+            else if (n <= second)
+            {
+                second = n;  // second smallest element
+            }
+            else
+            {
+                return true;
             }
         }
 

@@ -5,27 +5,32 @@ class Solution {
 public:
     bool isPalindrome(int x)
     {
-        if(x < 0)
+        if(x == 0)
+        {
+            return true;
+        }
+        if(x < 0 || x % 10 == 0)
         {
             return false;
         }
 
-        int length = 0;
+        int reversed_num = 0;
 
-        for(int i = 0; ; ++i)
+        while(x > reversed_num)
         {
-            if(x / 10 != 0)
-            {
-                length++;
-            }
-            else
-            {
-                break;
-            }
+            int pop = x % 10;
+            x = x / 10;
+
+            reversed_num = reversed_num * 10 + pop;
         }
 
-        cout << length;
+        if(x == reversed_num || x == (reversed_num / 10))
+        {
+            return true;
+        }
 
-        return true;
+        return false;
+
+        
     }
 };

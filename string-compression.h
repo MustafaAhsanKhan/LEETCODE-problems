@@ -16,18 +16,15 @@ public:
             char curr = chars[i];
             
             int count = 0;
-            //Find count of duplicates
             while(i < n && chars[i] == curr)
             {
                 i++;
                 count++;
             }
             
-            //Assign it to chars and move index ahead to add the count
             chars[index] = curr;
             index++;
             
-            //add the count
             if(count > 1)
             {
                 string count_str = to_string(count);

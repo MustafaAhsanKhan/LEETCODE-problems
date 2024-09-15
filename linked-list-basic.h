@@ -17,13 +17,14 @@ class LinkedList
     public:
     LinkedList()
     {
-        head = NULL;
+        head = nullptr;
+        tail = nullptr;
         size = 0;
     }
 
     bool isEmpty()
     {
-        return head == NULL;
+        return head == nullptr;
     }
 
     void Sins(int x)  // Inserting at the start
@@ -31,32 +32,34 @@ class LinkedList
         Node* temp = new Node;
         temp->data = x;
 
-        if(head == NULL)
+        if (head == nullptr)
         {
-            temp->next = NULL;
+            temp->next = nullptr;
             head = temp;
+            tail = temp;
         }
         else
         {
             temp->next = head;
             head = temp;
         }
+        size++;
     }
 
     void Lins(int x)  // Inserting at the last/end
     {
         Node* temp = new Node;
         temp->data = x;
-        temp->next = NULL;
+        temp->next = nullptr;
 
-        if(head == NULL)
+        if(head == nullptr)
         {
             head = temp;
         }
         else
         {
             Node* ptr = head;
-            while(ptr->next != NULL)
+            while(ptr->next != nullptr)
             {
                 ptr = ptr->next;
             }
@@ -66,13 +69,13 @@ class LinkedList
         size++;
     }
 
-    void Lins(int x)  // Inserting at the last/end  // With tail pointer
+    void Lins_W_Tail(int x)  // Inserting at the last/end  // With tail pointer
     {
         Node* temp = new Node;
         temp->data = x;
-        temp->next = NULL;
+        temp->next = nullptr;
 
-        if(head == NULL)
+        if(head == nullptr)
         {
             head = temp;
             tail = temp;
@@ -83,5 +86,29 @@ class LinkedList
             tail = temp;
         }
         size++;
+    }
+
+    void print()
+    {
+        Node* temp = head;
+        while (temp != nullptr)
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+     ~LinkedList()  // Destructor to avoid memory leaks
+    {
+        Node* current = head;
+        Node* nextNode;
+
+        while (current != nullptr)
+        {
+            nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
     }
 };

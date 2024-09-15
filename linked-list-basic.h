@@ -25,5 +25,20 @@ class LinkedList
         return head == NULL;
     }
 
-    
+    void Sins(int x)  // Inserting at the start
+    {
+        Node* temp = new Node;
+        temp->data = x;
+
+        if(head == NULL)
+        {
+            temp->next = NULL;
+            head = temp;
+        }
+        else
+        {
+            temp->next = head;
+            head = temp;
+        }
+    }
 };

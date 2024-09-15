@@ -41,4 +41,27 @@ class LinkedList
             head = temp;
         }
     }
+
+    void Lins(int x)  // Inserting at the last/end
+    {
+        Node* temp = new Node;
+        temp->data = x;
+        temp->next = NULL;
+
+        if(head == NULL)
+        {
+            head = temp;
+        }
+        else
+        {
+            Node* ptr = head;
+            while(ptr->next != NULL)
+            {
+                ptr = ptr->next;
+            }
+
+            ptr->next = temp;
+        }
+        size++;
+    }
 };

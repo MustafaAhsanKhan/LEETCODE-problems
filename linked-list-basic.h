@@ -64,4 +64,23 @@ class LinkedList
         }
         size++;
     }
+
+    void Lins(int x)  // Inserting at the last/end  // With tail pointer
+    {
+        Node* temp = new Node;
+        temp->data = x;
+        temp->next = NULL;
+
+        if(head == NULL)
+        {
+            head = temp;
+            tail = temp;
+        }
+        else
+        {
+            tail->next = temp;
+            tail = temp;
+        }
+        size++;
+    }
 };

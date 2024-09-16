@@ -88,6 +88,42 @@ class LinkedList
         size++;
     }
 
+    void deleteStart()
+    {
+        Node* temp = head;
+        head = temp->next;
+        delete temp;
+    }
+
+    void deleteLast()
+    {
+        if(head = nullptr)
+        {
+            return;
+        }
+        else
+        {
+            Node* prev, *curr;
+            curr = head;
+            prev = head;
+
+            while(curr != nullptr)
+            {
+                prev = curr;
+                curr = curr->next;
+            }
+            prev->next = nullptr;
+            delete curr;  // Removing the last node
+            tail = prev;
+        }
+    }
+
+    void deleteIndex(int index)
+    {
+        
+    }
+
+
     void print()
     {
         Node* temp = head;

@@ -6,17 +6,22 @@ public:
     int lengthOfLastWord(string s)
     {
         bool f1 = false;
-        bool f1 = false;
 
         int size = 0;
 
         for(int i = s.length(); i >= 0; --i)
         {
-            if(s[i] >= 'A' && s[i] <= 'a')
+            if((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z'))
             {
                 f1 = true;
+                size++;
             }
-            if()
+            else if(f1 == true && s[i] == ' ')
+            {
+                return size;
+            }
         }
+
+        return size;
     }
 };

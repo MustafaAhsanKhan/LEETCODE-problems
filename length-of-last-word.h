@@ -9,7 +9,7 @@ public:
 
         int size = 0;
 
-        for(int i = s.length(); i >= 0; --i)
+        for(int i = s.length() - 1; i >= 0; --i)
         {
             if((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z'))
             {

@@ -10,8 +10,28 @@
  */
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head)
-    {
-        
+    ListNode* deleteDuplicates(ListNode* head) {
+        // If the list is empty or has only one element, return it
+        if (head == nullptr || head->next == nullptr)
+        {
+            return head;
+        }
+        ListNode* current = head;
+
+        while (current != nullptr && current->next != nullptr)
+        {
+            if (current->val == current->next->val)
+            {
+                ListNode* duplicate = current->next;
+                current->next = current->next->next;
+                delete duplicate; // Free memory for the duplicate node
+            } else
+            {
+                // Move to the next distinct element
+                current = current->next;
+            }
+        }
+
+        return head;
     }
 };

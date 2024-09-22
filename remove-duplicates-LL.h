@@ -39,8 +39,8 @@ int func(Node* head)
             }
             else
             {
-                prev = temp;  // Move `prev` to the current node
-                temp = temp->next;  // Move to the next node
+                prev = temp;
+                temp = temp->next;
             }
         }
 

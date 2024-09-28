@@ -8,7 +8,25 @@
  */
 class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+        unordered_set<ListNode*> nodes;
+
+        while (headA != nullptr)
+        {
+            nodes.insert(headA);
+            headA = headA->next;
+        }
+
+        while (headB != nullptr)
+        {
+            if (nodes.find(headB) != nodes.end())
+            {
+                return headB;
+            }
+            headB = headB->next;
+        }
+
+        return nullptr;
     }
 };

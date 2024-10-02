@@ -2,9 +2,14 @@
 using namespace std;
 #include <string>
 
+#include <iostream>
+using namespace std;
+#include <string>
+
 class Solution {
 public:
-    bool rotateString(string s, string goal) {
+    bool rotateString(string s, string goal)
+    {
         // Check if the lengths are equal, otherwise return false immediately
         if (s.length() != goal.length()) {
             return false;
@@ -14,7 +19,7 @@ public:
         string doubled = s + s;
         
         // Check if goal is a substring of the doubled string
-        return doubled.find(goal)
+        return doubled.find(goal) != string::npos;
     }
 };
 

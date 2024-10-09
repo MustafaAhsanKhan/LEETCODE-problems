@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+    {
+        int x = m - 1;
+        int y = n - 1;
+
+        for(int z = m + n - 1; z >= 0; --z)
+        {
+            if(x < 0)
+            {
+                nums1[z] = nums2[y];
+                --y;
+            }
+            else if(y < 0)
+            {
+                break;
+            }
+            else if(nums1[x] > nums2[y])
+            {
+                nums1[z] = nums1[x];
+                --x;
+            }
+            else
+            {
+                nums1[z] = nums2[y];
+                --y;
+            }
+        }
+    }
+};

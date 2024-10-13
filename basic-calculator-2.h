@@ -48,7 +48,7 @@ public:
             }
         }
 
-        // Calculate the result from the stack
+        // Calculate Result by adding
         int sum = 0;
         while(!s1.empty())
         {

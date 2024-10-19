@@ -13,10 +13,15 @@ public:
 
         if(copy[copy.size() - 1] >= 2 * (copy[copy.size() - 2]))
         {
-            for(int i = 0; i <= copy.size())
+            for(int i = 0; i <= copy.size(); ++i)
             {
-                
+                if(nums[i] == copy[copy.size() - 1])
+                {
+                    return i;
+                }
             }
         }
+
+        return -1;
     }
 };

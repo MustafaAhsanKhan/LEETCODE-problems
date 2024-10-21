@@ -17,16 +17,16 @@ using namespace std;
 class Solution {
 public:
     vector<int> res;
-    vector<int> inorderTraversal(TreeNode* root)
+    vector<int> postorderTraversal(TreeNode* root)
     {
         if(root == nullptr)
         {
             return res;
         }
 
-        inorderTraversal(root->left);
+        postorderTraversal(root->left);
+        postorderTraversal(root->right);
         res.push_back(root->val);
-        inorderTraversal(root->right);
         return res;
     }
 };

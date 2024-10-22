@@ -9,18 +9,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
+    bool isSymmetric(TreeNode* root)
+    {
         // Base case: if both trees are empty  // Reached the end
-        if (p == nullptr && q == nullptr) {
+        if (root == nullptr && root == nullptr) {
             return true;
         }
         
         // If one tree is empty but the other is not, return false
-        if (p == nullptr || q == nullptr) {
+        if (root == nullptr || root == nullptr) {
             return false;
         }
         
@@ -30,6 +29,6 @@ public:
         }
         
         // Recursively check the left and right subtrees
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        return isSymmetric(root->left) && isSymmetric(root->right);
     }
 };

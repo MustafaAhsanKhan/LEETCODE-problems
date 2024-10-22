@@ -11,15 +11,15 @@
  */
 class Solution {
 public:
-    bool isSymmetric(TreeNode* root)
+    bool helper(TreeNode* p, TreeNode* q)
     {
         // Base case: if both trees are empty  // Reached the end
-        if (root == nullptr && root == nullptr) {
+        if (p == nullptr && q == nullptr) {
             return true;
         }
         
         // If one tree is empty but the other is not, return false
-        if (root == nullptr || root == nullptr) {
+        if (p == nullptr || q == nullptr) {
             return false;
         }
         
@@ -27,8 +27,12 @@ public:
         if (p->val != q->val) {
             return false;
         }
-        
+
+        return helper(p->left, q->right);
+    }
+    bool isSymmetric(TreeNode* root)
+    {
         // Recursively check the left and right subtrees
-        return isSymmetric(root->left) && isSymmetric(root->right);
+        return helper(root->left, root->right);
     }
 };

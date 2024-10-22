@@ -26,13 +26,18 @@ public:
                 s1.pop();
             }
         }
+
+        if(s2.empty())
+        {
+            return -1;
+        }
         else
         {
             int data = s2.top();
             s2.pop();
             return data;
         }
-        return -1;
+        return 1;
     }
     
     int peek() {

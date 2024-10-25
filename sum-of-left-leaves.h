@@ -18,7 +18,7 @@ public:
         {
             return 0;
         }
-        if(root && root->left)
+        if(root->left)
         {
             if(root->left->left == nullptr && root->left->right == nullptr)
             {

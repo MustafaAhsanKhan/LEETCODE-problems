@@ -19,19 +19,33 @@ class Solution {
 public:
     vector<string> result;
 
-    vector<string> helper(TreeNode* a, Treenode* b)
+    void helper(TreeNode* a, string curr)
     {
-        if (a == nullptr && b == nullptr)  // Reached leaf node
+        if (a == nullptr)
         {
-            return result;
+            return;
         }
 
-        result.push_back(current_string);
+        curr += to_string(a->val);
 
-        return helper(a->)
+        if(a->right == nullptr && a->left == nullptr)
+        {
+            result.push_back(curr);  // Only add the string when reached a leaf node
+        }
+        else
+        {
+            curr += "->";
+            helper(a->right, curr);
+            helper(a->left, curr);
+        }
+
     }
     vector<string> binaryTreePaths(TreeNode* root)
     {
-        return helper(root->left, root->right);
+        if(root == nullptr) { return result; }
+        
+        helper(root, "");
+
+        return result;
     }
 };

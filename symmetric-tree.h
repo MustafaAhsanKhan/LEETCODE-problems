@@ -28,7 +28,7 @@ public:
             return false;
         }
 
-        return helper(p->left, q->right);
+        return helper(p->left, q->right) && helper(p->right, q->left);
     }
     bool isSymmetric(TreeNode* root)
     {

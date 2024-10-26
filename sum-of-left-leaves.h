@@ -26,8 +26,8 @@ public:
             }
         }
 
-        sumOfLeftLeaves(root->left);
-        sumOfLeftLeaves(root->right);
+        sumOfLeftLeaves(root->left);  // Left subtree
+        sumOfLeftLeaves(root->right);  // Right subtree
         return sum;
     }
 };

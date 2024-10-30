@@ -20,21 +20,20 @@ public:
 
 class Solution {
 public:
-    void preorder(Node* root, vector<int>& ans)
+    void postorder(Node* root, vector<int>& ans)
     {
         if (!root) return;
-        ans.push_back(root->val);
         for (int i = 0; i < root->children.size(); ++i)
         {
-            preorder(root->children[i], ans);
+            postorder(root->children[i], ans);
         }
+        ans.push_back(root->val);
     }
 
-
-    vector<int> preorder(Node* root)
+    vector<int> postorder(Node* root)
     {
         vector<int> ans;
-        preorder(root,ans);
+        postorder(root,ans);
         return ans;
     }
 };

@@ -13,83 +13,54 @@
 #include <iostream>
 using namespace std;
 
-int getInorderSuccessor(TreeNode* temp)
-{
-    TreeNode* root = temp->right;
-    TreeNode* prev = root;
-    
-    while(root->left != nullptr)
-    {
-        prev = root;
-        root = root->left;
-    }
-    
-    int IC = root->val;
-
-    if(root->right)
-    {
-        prev->left = root->right;
-    }
-    else
-    {
-        prev->left = nullptr;
-    }
-
-    delete root;
-
-    return IC;
-
-}
 
 class Solution {
 public:
+
+    TreeNode* getSuccessor(TreeNode* curr)
+    {
+        curr = curr->right;
+        while (curr != NULL && curr->left != NULL)
+            curr = curr->left;
+        return curr;
+    }
     TreeNode* deleteNode(TreeNode* root, int key)
     {
-        if(root == nullptr)
-        {
+        // Base case
+        if (root == NULL)
             return root;
-        }
 
-        TreeNode* temp = root;
-        TreeNode* prev = nullptr;
-        
-        // Loop until you find the key or reach a nullptr
-        while(temp != nullptr && temp->val != key)
+        // If key to be searched is in a subtree
+        if (root->val > key)
         {
-            if(key > temp->val)
+            root->left = deleteNode(root->left, key);
+        }
+        else if (root->val < key)
+        {
+            root->right = deleteNode(root->right, key);
+        }
+        else  // Node found with the given key
+        {
+            if (root->left == NULL)  // 0 children or only right child
             {
-                prev = temp;
-                temp = temp->right;
+                TreeNode* temp = root->right;
+                delete root;
+                return temp;
             }
-            else
+
+            // When root has only left child
+            if (root->right == NULL)
             {
-                prev = temp;
-                temp = temp->left;
+                TreeNode* temp = root->left;
+                delete root;
+                return temp;
             }
-        }
 
-        if(temp == root)  // The node to delete is the root of the tree
-        {
-            int IC = getInorderSuccessor(temp);
-            temp->val = IC;
-            return root;
+            // When both children are present
+            TreeNode* succ = getSuccessor(root);
+            root->val = succ->val;
+            root->right = deleteNode(root->right, succ->val);
         }
-
-        if(temp->left && temp->right)  // Both children exist
-        {
-            int IC = getInorderSuccessor(temp);
-            temp->val = IC;
-        }
-        else if(temp->right)  // Right child
-        {
-            prev->right = temp->right;
-        }
-        else  // Left child
-        {
-            prev->left = temp->left;
-        }
-
-        delete temp;
         return root;
     }
 };

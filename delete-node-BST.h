@@ -59,7 +59,7 @@ public:
             // When both children are present
             TreeNode* succ = getSuccessor(root);
             root->val = succ->val;
-            root->right = deleteNode(root->right, succ->val);
+            root->right = deleteNode(root->right, succ->val);  // Recursive call
         }
         return root;
     }

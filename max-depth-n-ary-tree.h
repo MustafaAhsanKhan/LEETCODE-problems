@@ -28,11 +28,11 @@ public:
         }
         
         int depth = 0;
-        for (Node* child : root->children)
+        for (int i = 0; i < root->children.size(); ++i)
         {
-            depth = max(depth, maxDepth(child));
+            depth = max(depth, maxDepth(root->children[i]));
         }
         
-        return depth + 1;  // Add 1 to account for the current node's depth
+        return depth + 1;
     }
 };

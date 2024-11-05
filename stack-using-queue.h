@@ -6,9 +6,7 @@ public:
     queue<int> q1;
     queue<int> q2;
     MyStack()
-    {
-        
-    }
+    {   }
     
     void push(int x)
     {

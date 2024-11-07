@@ -28,5 +28,7 @@ public:
                 q1.push(temp);
             }
         }
+
+        return q1.size();
     }
 };
